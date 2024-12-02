@@ -1,11 +1,11 @@
-import {View, Text} from "react-native";
+import {View, Text, StyleSheet, Platform} from "react-native";
 
 
 export default function PokemonCard () {
     
     return (
-        <View>
-            <Text>
+        <View style={styles.card} >
+            <Text  >
                 Pokememon card
             </Text>
         </View>
@@ -13,3 +13,30 @@ export default function PokemonCard () {
   
 
 }
+
+const styles = StyleSheet.create({
+
+   card :{
+
+    backgroundColor:"white",
+    borderRadius:16,
+    borderWidth:2,
+    padding : 16,
+    margin :16,
+    ...Platform.select({
+        ios:{
+            shadowOffset:{width : 2, height :2},
+            shadowColor: "#333",
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+        },
+        android : {
+            elevation : 5,
+        }
+    })
+
+
+   }
+
+
+});
