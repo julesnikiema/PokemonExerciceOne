@@ -19,15 +19,17 @@ export default function PokemonCard ({name,
     
     return (
         <View style={styles.card} >
-            <View>
-                <Text>{name}</Text>
-                <Text>{hp}</Text>
+            <View style={styles.namecontainer}>
+                <Text style={styles.name} >{name}</Text>
+                <Text style={styles.hp}> ❤️{hp}</Text>
             </View>
 
             <View>
             {/* L'image est affichée en utilisant le composant Image de React Native, */}
              {/* avec une balise d'accessibilité pour décrire l'image. */}
-                <Image source={image} accessibilityLabel={`${name}pokemon`} />
+                <Image style={styles.image} source={image} accessibilityLabel={`${name}pokemon`} 
+                    resizeMode="contain"
+                />
             </View>
 
             <View>
@@ -69,9 +71,23 @@ const styles = StyleSheet.create({
             elevation : 5,
         }
     })
+   },
 
+    namecontainer:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        marginBottom:32,
+    },
+    name:{
+        fontSize:30,
+        fontWeight:"bold",
+    },
+    hp:{
+        fontSize:22,
+    },
+    image: {
+        width:"100%",
+        height:200,
 
-   }
-
-
+    }
 });
