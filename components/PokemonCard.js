@@ -1,13 +1,48 @@
-import {View, Text, StyleSheet, Platform} from "react-native";
+import {View, Text, StyleSheet, Platform,Image} from "react-native";
 
 
-export default function PokemonCard () {
+export default function PokemonCard ({name,
+    image,
+    type,
+    hp,
+    moves,
+    weaknesses}
+    
+) 
+
+// Cette ligne exporte par défaut la fonction PokemonCard, ce qui permet de l'utiliser dans d'autres 
+// fichiers du projet. Les arguments attendus sont les propriétés nécessaires pour afficher la carte 
+// d'un Pokémon : name, image, type, hp, moves, et weaknesses.
+
+
+{
     
     return (
         <View style={styles.card} >
-            <Text  >
-                Pokememon card
-            </Text>
+            <View>
+                <Text>{name}</Text>
+                <Text>{hp}</Text>
+            </View>
+
+            <View>
+            {/* L'image est affichée en utilisant le composant Image de React Native, */}
+             {/* avec une balise d'accessibilité pour décrire l'image. */}
+                <Image source={image} accessibilityLabel={`${name}pokemon`} />
+            </View>
+
+            <View>
+                <Text>{type}</Text>
+            </View>
+
+            <View>
+                <Text> Moves : {moves.join(",")}</Text>
+                {/* Affiche les mouvements du Pokémon sous forme de liste, séparés par des virgules. */}
+
+
+            </View> 
+            <View>
+                <Text> Weaknesses : {weaknesses.join(",")}</Text>
+            </View>
         </View>
     )
   
